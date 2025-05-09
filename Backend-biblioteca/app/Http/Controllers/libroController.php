@@ -52,9 +52,7 @@ class libroController extends Controller
      */
     public function store(Request $request)
     {
-        \Log::info('POST request received', ['data' => $request->all()]);
-
-        $request->validate([
+        $validatedData = $request->validate([
             'nombre' => 'required|string|max:255',
             'cantidad' => 'required|integer',
             'especialidad' => 'required|string|max:255',
@@ -64,7 +62,7 @@ class libroController extends Controller
             'FK_autor' => 'required|integer|exists:autor,id',
         ]);
 
-        $libro = libroModelo::create($request->all());
+        $libro = libroModelo::create($validatedData);
 
         \Log::info('Libro created successfully', ['data' => $libro]);
 

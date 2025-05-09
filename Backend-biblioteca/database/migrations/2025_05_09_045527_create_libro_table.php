@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('libro', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre', 255)->nullable(false);
-            $table->string('cantidad', 255)->nullable(false);
-            $table->string('especialidad', 255)->nullable(false);
-            $table->string('bibliografia', 255)->nullable(false);
-            $table->unsignedBigInteger('FK_categoria')->nullable(false);
-            $table->unsignedBigInteger('FK_proveedor')->nullable(false);
-            $table->unsignedBigInteger('FK_autor')->nullable(false);
+            $table->string('nombre', 255)->nullable(); // Make the column nullable
+            $table->string('cantidad', 255)->nullable();
+            $table->string('especialidad', 255)->nullable();
+            $table->string('bibliografia', 255)->nullable();
+            $table->unsignedBigInteger('FK_categoria')->nullable(); // Make FK_categoria nullable
+            $table->unsignedBigInteger('FK_proveedor')->nullable();
+            $table->unsignedBigInteger('FK_autor')->nullable();
             $table->timestamps();
 
             $table->foreign('FK_categoria')->references('id')->on('categoria')->onDelete('cascade');
